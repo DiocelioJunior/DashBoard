@@ -1,0 +1,406 @@
+<!--Link Dribble:https://dribbble.com/shots/19465315-Add-product-Ecommerce-Dashboard-->
+<!--Autor:Omar Faruk-->
+<!DOCTYPE html>
+<html lang="pt-Br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Titulo da Pagina-->
+    <title>Ecommerce Dashboard</title>
+    <!--Link CSS-->
+    <link rel="stylesheet" href="/css/styles.css">
+    <!--Link Icons-->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=add_a_photo,analytics,arrow_back,arrow_back_ios,arrow_forward_ios,delete,edit,filter_alt,folder_managed,keyboard_arrow_down,more_vert,preview,search,settings,storefront" />
+</head>
+
+<body>
+    <section class="container">
+        <!--Side Bar Lateral-->
+        <aside class="sidebar">
+            <!--Logo e Nome da Pagina-->
+            <div class="logo">
+                <img src="./assets/images/logo.png">
+                <h1>Dashboard</h1>
+            </div>
+            <!--Barra de Pesquisa-->
+            <div class="search">
+                <input type="text" name="search-input" id="search-input" placeholder="Pesquisar">
+            </div>
+            <!--Lista Lateral-->
+            <div class="list">
+                <!--Item Page Manager-->
+                <div class="list-itens">
+                    <div class="item" id="page-manager">
+                        <span id="icon-pageManager" class="material-symbols-outlined">
+                            folder_managed
+                        </span>
+
+                        <h3>Page Manager</h3>
+                    </div>
+
+                    <span class="material-symbols-outlined">
+                        keyboard_arrow_down
+                    </span>
+                </div>
+                <!--Drop-List Page Manager-->
+                <div class="list-itens-drop" id="drop-pageManager">
+                    <ul>
+                        <li id="new-page">New Page</li> <!--class="activated"-->
+                        <li id="custom-pages">Custom Pages</li>
+                    </ul>
+                </div>
+
+                <!--Item My Shop-->
+                <div class="list-itens">
+                    <div class="item" id="my-shop">
+                        <span id="icon-myShop" class="material-symbols-outlined">
+                            storefront
+                        </span>
+
+                        <h3>My Shop</h3>
+                    </div>
+
+                    <span class="material-symbols-outlined">
+                        keyboard_arrow_down
+                    </span>
+                </div>
+
+                <!--Drop-List My Page-->
+                <div class="list-itens-drop" id="drop-myShop">
+                    <ul>
+                        <li id="products">New Product</li>
+                        <li id="order">Products</li>
+                    </ul>
+                </div>
+
+                <!--Item Analytics-->
+                <div class="list-itens">
+                    <div class="item">
+                        <span class="material-symbols-outlined">
+                            analytics
+                        </span>
+
+                        <h3>Business Analytics</h3>
+                    </div>
+
+                    <span class="material-symbols-outlined">
+                        keyboard_arrow_down
+                    </span>
+                </div>
+
+                <!--Settings-->
+                <div class="list-itens">
+                    <div class="item" id="settings">
+                        <span id="icon-settings" class="material-symbols-outlined">
+                            settings
+                        </span>
+
+                        <h3>Settings</h3>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <main class="content">
+            <div class="navbar" id="navbar">
+                <div class="icon-back">
+                    <span class="material-symbols-outlined">
+                        arrow_back
+                    </span>
+                </div>
+                <div class="page-txt">
+                    <h1 id="page-tx"> </h1>
+                </div>
+            </div>
+
+            <!--Container de conteudos-->
+            <div class="content-container">
+
+                <!--///Formulario para adcionar paginas novas///////////////////////////////////////////////////////-->
+                <form id="page-form">
+                    <h1>Cadastro de Página</h1>
+                    <div class="page-form-container">
+
+                        <h3 for="page-name">Page Name</h3>
+                        <input type="text" id="page-name" required>
+
+                        <h3 for="page-description">Description:</h3>
+                        <textarea id="page-description" rows="3"
+                            placeholder="Descreva a finalidade da página"></textarea>
+
+                        <h3 for="page-category">Categoria:</h3>
+                        <select id="page-category">
+                            <option value="blog">Blog</option>
+                            <option value="ecommerce">E-commerce</option>
+                            <option value="portfolio">Portfólio</option>
+                            <option value="servico">Serviço</option>
+                            <option value="outro">Outro</option>
+                        </select>
+
+
+                        <button type="button" onclick="savePage()">Cadastrar Página</button>
+                    </div>
+                    <h2>Pages</h2>
+                    <ul id="page-list"></ul>
+                </form>
+
+                <!--///Formulario para Customizar Paginas///////////////////////////////////////////////////////-->
+                <div class="container-page-custom">
+                    <div class="container-form-custom">
+                        <h1>Customização</h1>
+                        <form id="page-customization-form">
+                            <h1>Header</h1>
+                            <div class="header-custom">
+                                <label for="header-bg-color">Cor de fundo:</label>
+                                <div class="colors" id="header-bg-colors">
+                                    <button type="button" class="color-option" data-color="#FF5733"
+                                        style="background-color: #FF5733;"></button>
+                                    <button type="button" class="color-option" data-color="#33FF57"
+                                        style="background-color: #33FF57;"></button>
+                                    <button type="button" class="color-option" data-color="#3357FF"
+                                        style="background-color: #3357FF;"></button>
+                                    <button type="button" class="color-option" data-color="#FFD700"
+                                        style="background-color: #FFD700;"></button>
+                                    <button type="button" class="color-option" data-color="#FF33A1"
+                                        style="background-color: #FF33A1;"></button>
+                                </div>
+
+                                <label for="header-text-color">Cor do texto:</label>
+                                <div class="colors" id="header-text-colors">
+                                    <button type="button" class="color-option" data-color="#FF5733"
+                                        style="background-color: #FF5733;"></button>
+                                    <button type="button" class="color-option" data-color="#33FF57"
+                                        style="background-color: #33FF57;"></button>
+                                    <button type="button" class="color-option" data-color="#3357FF"
+                                        style="background-color: #3357FF;"></button>
+                                    <button type="button" class="color-option" data-color="#FFD700"
+                                        style="background-color: #FFD700;"></button>
+                                    <button type="button" class="color-option" data-color="#FF33A1"
+                                        style="background-color: #FF33A1;"></button>
+                                </div>
+
+                                <label for="header-font-size">Tamanho da fonte (px):</label>
+                                <input type="number" id="header-font-size" name="headerFontSize" min="10" max="50">
+
+                                <label for="header-logo">Logo</label>
+                                <div class="image-logo" id="image-logo">
+                                    <input type="file" id="image-logo-form" name="image-form-product" accept="image/*"
+                                        style="display: none;" required>
+                                    <div class="customButton" id="logo-custom-button">
+                                        <span class="material-symbols-outlined">
+                                            add_a_photo
+                                        </span>
+                                        <p>Click to upload</p>
+                                    </div>
+        
+                                    <div class="customButton" id="image-logo-preview">
+                                        <img id="preview-image" src="">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button type="submit">Salvar Customizações</button>
+                        </form>
+                    </div>
+
+                    <div class="preview-phone">
+                        <div class="phone">
+
+                        </div>
+                    </div>
+                </div>
+
+                <!--///Formulario para adcionar produtos///////////////////////////////////////////////////////-->
+                <form class="form-product" id="form-product">
+                    <div class="form-column">
+                        <!--Descrição do Produto-->
+                        <h1>Description</h1>
+                        <div class="card-form-product" id="description">
+                            <h3>Product Name</h3>
+                            <input type="text" id="name-form-product" name="name-form-product"
+                                placeholder="SmartHome Echo Lamp Pro" required>
+                            <h3>Business Description</h3>
+                            <textarea type="text" id="text-form-product" name="text-form-product" required>
+                            </textarea>
+                        </div>
+
+                        <!--Categoria do Produto-->
+                        <h1>Category</h1>
+                        <div class="card-form-product" id="category">
+                            <h3>Product Category</h3>
+                            <select id="category-form-product" name="category-form-product" required>
+                                <option value="" disabled selected>Select a category</option>
+                                <option value="electronics">Electronics</option>
+                                <option value="fashion">Fashion</option>
+                                <option value="home-garden">Home & Garden</option>
+                                <option value="beauty">Beauty</option>
+                                <option value="sports">Sports</option>
+                                <option value="toys">Toys</option>
+                                <option value="automotive">Automotive</option>
+                                <option value="books">Books</option>
+                                <option value="music">Music</option>
+                                <option value="office-supplies">Office Supplies</option>
+                                <option value="health">Health</option>
+                                <option value="groceries">Groceries</option>
+                                <option value="baby">Baby</option>
+                                <option value="jewelry">Jewelry</option>
+                                <option value="pet-supplies">Pet Supplies</option>
+                            </select>
+                        </div>
+
+                        <!--Categoria do Produto-->
+                        <h1>URL </h1>
+                        <div class="card-form-product" id="url-product">
+                            <h3>Product Link</h3>
+                            <input type="url" id="link-form-product" name="link-form-product"
+                                placeholder="https://example.com/8f73b1e4f2" required>
+                            <h3>Selling platform</h3>
+                            <select id="sales-platform" name="sales-platform" required>
+                                <option value="" disabled selected>Select a sales platform</option>
+                                <option value="amazon">Amazon</option>
+                                <option value="ebay">eBay</option>
+                                <option value="shopify">Shopify</option>
+                                <option value="etsy">Etsy</option>
+                                <option value="walmart">Walmart Marketplace</option>
+                                <option value="aliexpress">AliExpress</option>
+                                <option value="mercadolibre">Mercado Libre</option>
+                                <option value="bigcommerce">BigCommerce</option>
+                                <option value="rakuten">Rakuten</option>
+                                <option value="magento">Magento</option>
+                                <option value="woocommerce">WooCommerce</option>
+                                <option value="facebook-marketplace">Facebook Marketplace</option>
+                                <option value="instagram-shopping">Instagram Shopping</option>
+                                <option value="pinterest-shopping">Pinterest Shopping</option>
+                                <option value="google-shopping">Google Shopping</option>
+                            </select>
+                        </div>
+
+                        <!--Descrição do Produto-->
+                        <h1>Description</h1>
+                        <div class="card-form-product" id="sku-product">
+                            <h3>SKU (Optional)</h3>
+                            <input type="text" id="sku-form-product" name="sku-form-product" placeholder="UGG-BB-PUR-06"
+                                required>
+                        </div>
+                    </div>
+
+                    <div class="form-column">
+                        <!--Input de Imagem-->
+                        <h1>Product Images</h1>
+                        <div class="card-form-product" id="image-product">
+                            <input type="file" id="image-form-product" name="image-form-product" accept="image/*"
+                                style="display: none;" required>
+                            <div class="customButton" id="customButton">
+                                <span class="material-symbols-outlined">
+                                    add_a_photo
+                                </span>
+                                <p>Click to upload</p>
+                            </div>
+
+                            <div class="customButton" id="image-preview">
+                                <img id="preview-image" src="">
+                            </div>
+                        </div>
+
+
+                        <!--Preço do Produto-->
+                        <h1>Pricing</h1>
+                        <div class="card-form-product" id="price-product">
+                            <h3>Price</h3>
+                            <input type="number" id="price-form-product" name="price-form-product" placeholder="219,00"
+                                required>
+                            <h3>Compare at Price</h3>
+                            <input type="number" id="price-compare-form-product" name="price-compare-form-product"
+                                placeholder="279,00" required>
+                        </div>
+
+                        <!--Preço do Produto-->
+                        <h1>Page</h1>
+                        <div class="card-form-product" id="page-select-form">
+                            <select id="page-select" name="page-select" required>
+                                <option value="" disabled selected>Select a page</option>
+                                <!--Gerado dinameicamente usando JS, resgata as paginas ja criadas-->
+                            </select>
+                        </div>
+
+                        <div class="card-form-product" id="btn-product">
+                            <button type="button" id="discard">Discard</button>
+                            <button type="button" id="add-product">Add Product</button>
+                        </div>
+                    </div>
+                </form>
+
+
+                <!--///Lista de Produtos produtos///////////////////////////////////////////////////////-->
+                <div class="list-products" id="list-products">
+                    <div class="filter-container">
+                        <select class="filter-pages" id="filter-pages">
+                            <option value="" disabled selected>Filter by pages</option>
+                        </select>
+                        <input type="search" class="search-input" name="search" id="search-input"
+                            placeholder="Product name">
+                        <input type="search" class="id-input" name="id" id="id-input" placeholder="Product ID">
+                        <select class="filter-platform" id="filter-platform">
+                            <option value="" disabled selected>Filter by sales platform</option>
+                            <option value="amazon">Amazon</option>
+                            <option value="ebay">eBay</option>
+                            <option value="shopify">Shopify</option>
+                            <option value="etsy">Etsy</option>
+                            <option value="walmart">Walmart Marketplace</option>
+                            <option value="aliexpress">AliExpress</option>
+                            <option value="mercadolibre">Mercado Libre</option>
+                            <option value="bigcommerce">BigCommerce</option>
+                            <option value="rakuten">Rakuten</option>
+                            <option value="magento">Magento</option>
+                            <option value="woocommerce">WooCommerce</option>
+                            <option value="facebook-marketplace">Facebook Marketplace</option>
+                            <option value="instagram-shopping">Instagram Shopping</option>
+                            <option value="pinterest-shopping">Pinterest Shopping</option>
+                            <option value="google-shopping">Google Shopping</option>
+                        </select>
+
+                        <!--<button type="button" id="filter-button">
+                            <span class="material-symbols-outlined">filter_alt</span>Filter
+                        </button>-->
+                    </div>
+
+                    <div class="id-product-list">
+                        <div class="product-id-list">
+                            <h1>Name</h1>
+                        </div>
+                        <div class="product-id-list">
+                            <p>ID</p>
+                        </div>
+                        <div class="product-id-list">
+                            <h2>Category</h2>
+                        </div>
+                        <div class="product-id-list">
+                            <h2>Price</h2>
+                        </div>
+                        <div class="product-id-list">
+                            <h2>Action</h2>
+                        </div>
+                        <div class="product-id-list">
+                            <h2>Platform</h2>
+                        </div>
+                    </div>
+
+                    <ul id="product-list">
+                        <!-- A lista de produtos será inserida aqui -->
+                    </ul>
+                </div>
+            </div>
+        </main>
+    </section>
+
+    <!--Scripts JS-->
+    <script src="./js/main.js"></script>
+    <script src="./js/interactions.js"></script>
+    <script src="./js/form.js"></script>
+    <script src="./js/newPage.js"></script>
+    <script src="./js/customPage.js"></script>
+</body>
+
+</html>
