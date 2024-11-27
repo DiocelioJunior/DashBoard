@@ -21,12 +21,15 @@ const iconsList = document.getElementById("icon-list")
 
 const newPage = document.getElementById("page-form")
 
+const pageCustom = document.getElementById("container-form-custom")
+
 // Define o estilo inicial para garantir que os elementos estejam ocultos
 dropPageManager.style.display = "none";
 dropMyShop.style.display = "none";
 newProductPage.style.display = "none";
 listProductPage.style.display = "none";
 newPage.style.display = "none";
+pageCustom.style.display = "none"
 
 // Função para alternar a visibilidade de um menu dropdown e resetar as cores dos ícones
 function toggleDropdown(dropdown, icon) {
@@ -102,6 +105,15 @@ pages.forEach(page => {
             pageTxt.innerText = "New Page"
         } else {
             newPage.style.display = "none";
+        }
+
+        if (page.id === "custom-pages") {
+            const displayStyle = pageCustom.style.display === "none" ? "flex" : "none";
+            pageCustom.style.display = displayStyle;
+            navBar.style.display = displayStyle;
+            pageTxt.innerText = "Custom Page"
+        } else {
+            pageCustom.style.display = "none";
         }
 
 

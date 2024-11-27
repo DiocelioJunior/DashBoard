@@ -61,7 +61,7 @@ function displayProductsFromPages(nameFilter = "", pageFilter = "", idFilter = "
                     <p># ${product.id}</p>
                 </div>
                 <div class="product-id">
-                    <h2>${product.category}</h2>
+                    <h2>${product.page}</h2>
                 </div>
                 <div class="product-id">
                     <h2>R$ ${price}</h2>
